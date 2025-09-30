@@ -58,19 +58,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Close dropdowns when clicking outside
-    document.addEventListener('click', function(e) {
-        if (window.innerWidth > 768) {
-            if (!e.target.closest('.nav-item')) {
-                document.querySelectorAll('.dropdown-menu').forEach(menu => {
-                    menu.style.opacity = '0';
-                    menu.style.visibility = 'hidden';
-                    menu.style.transform = 'translateY(10px)';
-                });
-            }
-        }
-    });
-    
     // Chat Functionality
     const floatingChat = document.getElementById('floatingChat');
     const chatWindow = document.getElementById('chatWindow');
@@ -83,7 +70,15 @@ document.addEventListener('DOMContentLoaded', function() {
     let userName = '';
     let chatStarted = false;
     
-    console.log('Chat Elements:', { floatingChat, chatWindow, chatClose, chatForm, chatMessages });
+    console.log('Chat Elements:', { 
+        floatingChat, 
+        chatWindow, 
+        chatClose, 
+        chatForm, 
+        chatMessages,
+        chatNameInput,
+        chatMessageInput
+    });
     
     // Open chat window
     if (floatingChat && chatWindow) {
@@ -93,8 +88,6 @@ document.addEventListener('DOMContentLoaded', function() {
             floatingChat.style.display = 'none';
             resetChat();
         });
-    } else {
-        console.error('Chat elements not found');
     }
     
     // Close chat window
@@ -111,8 +104,11 @@ document.addEventListener('DOMContentLoaded', function() {
     function resetChat() {
         if (!chatMessages || !chatForm) return;
         
+        console.log('Resetting chat...');
         chatStarted = false;
         userName = '';
+        
+        // Clear all messages and set initial message
         chatMessages.innerHTML = `
             <div class="message bot-message">
                 <div class="message-content">
@@ -123,26 +119,33 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         
         // Show name input, hide message input initially
-        chatNameInput.style.display = 'block';
-        chatMessageInput.style.display = 'none';
-        chatNameInput.value = '';
-        chatMessageInput.value = '';
+        if (chatNameInput) chatNameInput.style.display = 'block';
+        if (chatMessageInput) chatMessageInput.style.display = 'none';
+        if (chatNameInput) chatNameInput.value = '';
+        if (chatMessageInput) chatMessageInput.value = '';
         
         // Update placeholder and button text
-        chatNameInput.placeholder = 'Your Name';
+        if (chatNameInput) chatNameInput.placeholder = 'Your Name';
         const submitBtn = chatForm.querySelector('button[type="submit"]');
-        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Start Chat';
+        if (submitBtn) {
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Start Chat';
+            submitBtn.disabled = false;
+        }
+        
+        console.log('Chat reset complete');
     }
     
     // Chat form submission
     if (chatForm) {
         chatForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            console.log('Chat form submitted');
+            console.log('Chat form submitted, chatStarted:', chatStarted);
             
             if (!chatStarted) {
                 // First message - get name and start chat
-                userName = chatNameInput.value.trim();
+                userName = chatNameInput ? chatNameInput.value.trim() : '';
+                console.log('User name entered:', userName);
+                
                 if (!userName) {
                     showBotMessage('Please enter your name to start the chat.');
                     return;
@@ -152,8 +155,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 startChat(userName);
             } else {
                 // Subsequent messages
-                const message = chatMessageInput.value.trim();
+                const message = chatMessageInput ? chatMessageInput.value.trim() : '';
+                console.log('User message:', message);
+                
                 if (!message) {
+                    showBotMessage('Please enter a message.');
                     return;
                 }
                 
@@ -161,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 addUserMessage(message);
                 
                 // Clear input
-                chatMessageInput.value = '';
+                if (chatMessageInput) chatMessageInput.value = '';
                 
                 // Show typing indicator and bot response
                 showTypingIndicator();
@@ -175,22 +181,27 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Start the chat after name is entered
     function startChat(name) {
+        console.log('Starting chat with:', name);
         chatStarted = true;
         userName = name;
         
         // Hide name input, show message input
-        chatNameInput.style.display = 'none';
-        chatMessageInput.style.display = 'block';
+        if (chatNameInput) chatNameInput.style.display = 'none';
+        if (chatMessageInput) chatMessageInput.style.display = 'block';
         
         // Update button text
         const submitBtn = chatForm.querySelector('button[type="submit"]');
-        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send';
+        if (submitBtn) {
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send';
+        }
         
         // Add welcome message with user's name
         addBotMessage(`Nice to meet you, ${name}! 👋 I'm here to help you plan your perfect event. What type of event are you interested in, or how can I assist you today?`);
         
         // Focus on message input
-        chatMessageInput.focus();
+        if (chatMessageInput) chatMessageInput.focus();
+        
+        console.log('Chat started successfully');
     }
     
     // Add user message to chat
@@ -281,7 +292,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // After a few messages, suggest sending email for detailed discussion
         const messageCount = document.querySelectorAll('.user-message').length;
-        if (messageCount >= 3) {
+        if (messageCount >= 2) {
             setTimeout(() => {
                 addBotMessage(`To provide you with the most accurate information and pricing, I recommend connecting with our events team. Would you like me to send your conversation to our team so they can reach out to you personally?`);
                 
@@ -313,7 +324,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     if (continueChatBtn) {
                         continueChatBtn.addEventListener('click', function() {
-                            continueChatBtn.parentElement.parentElement.remove();
+                            emailButtonDiv.remove();
                             addBotMessage(`Great! Let's continue our conversation. What else would you like to know about our services?`);
                         });
                     }
@@ -328,11 +339,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .map(p => p.textContent)
             .join('\n');
         
-        const botMessages = Array.from(document.querySelectorAll('.bot-message .message-content p:not(.typing-indicator p)'))
-            .map(p => p.textContent)
-            .join('\n');
-        
-        const conversation = `Chat Conversation with ${userName}:\n\nUser Messages:\n${userMessages}\n\nBot Responses:\n${botMessages}`;
+        const conversation = `Chat Conversation with ${userName}:\n\nUser Messages:\n${userMessages}`;
         
         // Show loading state
         const submitBtn = chatForm.querySelector('button[type="submit"]');
@@ -340,7 +347,7 @@ document.addEventListener('DOMContentLoaded', function() {
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
         submitBtn.disabled = true;
         
-        // Using Formspree - REPLACE WITH YOUR FORMSPREE FORM ID
+        // Using Formspree
         const formspreeURL = 'https://formspree.io/f/xvojnqyz'; // Replace with your Formspree form ID
         
         fetch(formspreeURL, {
@@ -385,7 +392,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const successDiv = document.createElement('div');
         successDiv.className = 'success-message';
         successDiv.innerHTML = '<i class="fas fa-check-circle"></i> Conversation sent to our team!';
-        chatForm.insertBefore(successDiv, chatForm.firstChild);
+        if (chatForm) {
+            chatForm.insertBefore(successDiv, chatForm.firstChild);
+        }
         
         // Remove success message after 5 seconds
         setTimeout(() => {
@@ -406,42 +415,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
-    
-    // Testimonial Carousel
-    const testimonialSlides = document.querySelectorAll('.testimonial-slide');
-    const dots = document.querySelectorAll('.dot');
-    let currentSlide = 0;
-    
-    function showSlide(n) {
-        testimonialSlides.forEach(slide => slide.classList.remove('active'));
-        dots.forEach(dot => dot.classList.remove('active'));
-        
-        currentSlide = (n + testimonialSlides.length) % testimonialSlides.length;
-        
-        testimonialSlides[currentSlide].classList.add('active');
-        dots[currentSlide].classList.add('active');
-    }
-    
-    // Auto-advance testimonials
-    if (testimonialSlides.length > 0) {
-        let slideInterval = setInterval(() => {
-            showSlide(currentSlide + 1);
-        }, 5000);
-        
-        // Dot click events
-        if (dots.length > 0) {
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    clearInterval(slideInterval);
-                    showSlide(index);
-                    // Restart auto-advance
-                    slideInterval = setInterval(() => {
-                        showSlide(currentSlide + 1);
-                    }, 5000);
-                });
-            });
-        }
-    }
     
     // Back to Top Button
     const backToTop = document.getElementById('backToTop');
@@ -488,29 +461,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Contact Form Submission
-    const contactForm = document.getElementById('contactForm');
-    
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Basic form validation
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            
-            if (!name || !email || !message) {
-                alert('Please fill in all required fields.');
-                return;
-            }
-            
-            // Show success message
-            alert('Thank you for your message! We will get back to you soon.');
-            contactForm.reset();
-        });
-    }
-    
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -530,12 +480,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     top: targetElement.offsetTop - 100,
                     behavior: 'smooth'
                 });
-                
-                // Close mobile menu if open
-                if (window.innerWidth <= 768) {
-                    if (navMenu) navMenu.classList.remove('active');
-                    if (navToggle) navToggle.classList.remove('active');
-                }
             }
         });
     });
@@ -553,100 +497,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
-    
-    // Animation on scroll
-    function animateOnScroll() {
-        const elements = document.querySelectorAll('.service-card, .portfolio-item, .value-card, .team-member');
-        
-        elements.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
-            const elementVisible = 150;
-            
-            if (elementTop < window.innerHeight - elementVisible) {
-                element.style.opacity = '1';
-                element.style.transform = 'translateY(0)';
-            }
-        });
-    }
-    
-    // Set initial state for animated elements
-    document.querySelectorAll('.service-card, .portfolio-item, .value-card, .team-member').forEach(element => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(20px)';
-        element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    });
-    
-    window.addEventListener('scroll', animateOnScroll);
-    // Trigger once on load
-    animateOnScroll();
-    
-    // Handle window resize
-    window.addEventListener('resize', function() {
-        if (window.innerWidth > 768) {
-            // Reset mobile menu state
-            if (navMenu) navMenu.classList.remove('active');
-            if (navToggle) navToggle.classList.remove('active');
-            
-            // Reset dropdown menus
-            document.querySelectorAll('.dropdown-menu').forEach(menu => {
-                menu.classList.remove('active');
-                menu.style.maxHeight = '';
-            });
-            
-            // Reset chevron icons
-            document.querySelectorAll('.dropdown-toggle .fa-chevron-down').forEach(chevron => {
-                chevron.style.transform = '';
-            });
-        }
-    });
-
-    // Video controls for hero section (if using video)
-    const heroVideo = document.getElementById('heroVideo');
-    if (heroVideo) {
-        // Ensure video plays correctly on mobile
-        heroVideo.play().catch(error => {
-            console.log('Video autoplay failed:', error);
-        });
-    }
 });
 
-// Additional utility functions
-function debounce(func, wait, immediate) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            timeout = null;
-            if (!immediate) func(...args);
-        };
-        const callNow = immediate && !timeout;
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-        if (callNow) func(...args);
-    };
-}
-
-// Enhanced scroll animations with debounce
-const debouncedScroll = debounce(() => {
-    const elements = document.querySelectorAll('.service-card, .portfolio-item, .value-card, .team-member');
-    
-    elements.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        const elementVisible = 150;
-        
-        if (elementTop < window.innerHeight - elementVisible) {
-            element.style.opacity = '1';
-            element.style.transform = 'translateY(0)';
-        }
-    });
-}, 10);
-
-window.addEventListener('scroll', debouncedScroll);
-
-// Initialize animations on load
+// Initialize on load
 window.addEventListener('load', function() {
-    // Trigger scroll animation once on load
-    debouncedScroll();
-    
-    // Add loaded class to body for any post-load animations
-    document.body.classList.add('loaded');
+    console.log('Website fully loaded');
 });
