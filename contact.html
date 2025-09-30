@@ -283,12 +283,52 @@
     </footer>
 
     <!-- Floating Elements -->
+    <!-- Floating Chat Button -->
     <div class="floating-chat" id="floatingChat">
         <div class="chat-icon">
             <i class="fas fa-comments"></i>
         </div>
     </div>
 
+    <!-- Chat Window -->
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header">
+            <div class="chat-header-info">
+                <h4>Royal Courtesies</h4>
+                <p>We're here to help!</p>
+            </div>
+            <button class="chat-close" id="chatClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot-message">
+                <div class="message-content">
+                    <p>Hello! 👋 Welcome to Royal Courtesies. What's your name and how can we assist you today?</p>
+                </div>
+                <div class="message-time">Just now</div>
+            </div>
+        </div>
+        
+        <div class="chat-form">
+            <form id="chatForm">
+                <div class="form-group">
+                    <input type="text" id="chatName" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="chatMessage" name="message" placeholder="How can we help you with your event?" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">
+                    <i class="fas fa-paper-plane"></i>
+                    Send Message
+                </button>
+            </form>
+        </div>
+    </div>
+
+
+<!-- Back to top -->
     <div class="back-to-top" id="backToTop">
         <i class="fas fa-chevron-up"></i>
     </div>
