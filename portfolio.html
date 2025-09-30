@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Portfolio - Royal Courtesies Ltd</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="nav-logo">
+            <a href="index.html">
+                <img src="images/royal_logo.png" alt="Royal Courtesies Ltd" class="logo-image">
+                <span>ROYAL COURTESIES LTD</span>
+            </a>
+        </div>
+        <div class="nav-menu" id="navMenu">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="about.html" class="nav-link">About</a>
+            <div class="nav-item dropdown">
+                <a href="services.html" class="nav-link dropdown-toggle">
+                    Services <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown-menu">
+                    <a href="services.html#events-management" class="dropdown-link">
+                        <i class="fas fa-calendar-alt"></i>
+                        Events Management
+                    </a>
+                    <a href="services.html#event-planning" class="dropdown-link">
+                        <i class="fas fa-clipboard-list"></i>
+                        Event Planning
+                    </a>
+                    <a href="services.html#protocol-services" class="dropdown-link">
+                        <i class="fas fa-user-tie"></i>
+                        Protocol Services
+                    </a>
+                    <a href="services.html#interior-design" class="dropdown-link">
+                        <i class="fas fa-couch"></i>
+                        Interior Design
+                    </a>
+                    <a href="services.html#photography" class="dropdown-link">
+                        <i class="fas fa-camera"></i>
+                        Photography
+                    </a>
+                    <a href="services.html#videography" class="dropdown-link">
+                        <i class="fas fa-video"></i>
+                        Videography
+                    </a>
+                </div>
+            </div>
+            <a href="portfolio.html" class="nav-link active">Portfolio</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+        <div class="nav-toggle" id="navToggle">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </div>
+</nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Portfolio</h1>
+            <p>A showcase of our exceptional events and creative work</p>
+        </div>
+    </section>
+
+    <!-- Portfolio Filters -->
+    <section class="portfolio-filters">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="wedding">Weddings</button>
+                <button class="filter-btn" data-filter="corporate">Corporate</button>
+                <button class="filter-btn" data-filter="protocol">Protocol Events</button>
+                <button class="filter-btn" data-filter="design">Interior Design</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Grid -->
+    <section class="portfolio-grid-section">
+        <div class="container">
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="wedding">
+                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Luxury Wedding">
+                    <div class="portfolio-overlay">
+                        <h3>Luxury Wedding</h3>
+                        <p>Kampala Serena Hotel</p>
+                        <a href="#" class="portfolio-link">View Details</a>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="corporate">
+                    <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Corporate Gala">
+                    <div class="portfolio-overlay">
+                        <h3>Corporate Gala</h3>
+                        <p>Speke Resort Munyonyo</p>
+                        <a href="#" class="portfolio-link">View Details</a>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="design">
+                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Interior Design">
+                    <div class="portfolio-overlay">
+                        <h3>Commercial Space Design</h3>
+                        <p>Nakasero, Kampala</p>
+                        <a href="#" class="portfolio-link">View Details</a>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="protocol">
+                    <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Diplomatic Event">
+                    <div class="portfolio-overlay">
+                        <h3>Diplomatic Reception</h3>
+                        <p>State House, Entebbe</p>
+                        <a href="#" class="portfolio-link">View Details</a>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="wedding">
+                    <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Garden Wedding">
+                    <div class="portfolio-overlay">
+                        <h3>Garden Wedding</h3>
+                        <p>Botanical Gardens, Entebbe</p>
+                        <a href="#" class="portfolio-link">View Details</a>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="corporate">
+                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Product Launch">
+                    <div class="portfolio-overlay">
+                        <h3>Product Launch</h3>
+                        <p>Uganda Manufacturers Association</p>
+                        <a href="#" class="portfolio-link">View Details</a>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="design">
+                    <img src="https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80" alt="Restaurant Design">
+                    <div class="portfolio-overlay">
+                        <h3>Restaurant Interior</h3>
+                        <p>The Pearl Restaurant, Kampala</p>
+                        <a href="#" class="portfolio-link">View Details</a>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="protocol">
+                    <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Awards Ceremony">
+                    <div class="portfolio-overlay">
+                        <h3>Awards Ceremony</h3>
+                        <p>Uganda National Cultural Centre</p>
+                        <a href="#" class="portfolio-link">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>500+</h3>
+                    <p>Events Completed</p>
+                </div>
+                <div class="stat-item">
+                    <h3>150+</h3>
+                    <p>Weddings Managed</p>
+                </div>
+                <div class="stat-item">
+                    <h3>200+</h3>
+                    <p>Corporate Events</p>
+                </div>
+                <div class="stat-item">
+                    <h3>50+</h3>
+                    <p>Protocol Events</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Inspired by Our Work?</h2>
+                <p>Let us create an unforgettable experience for your next event. Contact us to discuss your vision and how we can bring it to life.</p>
+                <a href="contact.html" class="btn btn-primary">Start Your Project</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="images/royal_logo.png" alt="Royal Courtesies Ltd" class="logo-image">
+                        <span  style="color: #D4AF37; font-weight: bold;">Royal Courtesies Ltd</span>
+                    </div>
+                    <p>Crafting unforgettable elegance through exceptional event management, protocol services, and creative design solutions in Uganda.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="services.html">Events Management</a></li>
+                        <li><a href="services.html">Event Planning</a></li>
+                        <li><a href="services.html">Protocol Services</a></li>
+                        <li><a href="services.html">Interior Design</a></li>
+                        <li><a href="services.html">Photography</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> Kampala, Uganda</li>
+                        <li><i class="fas fa-phone"></i> +256 782 722 222</li>
+                        <li><i class="fas fa-envelope"></i> info@royalcourtesies.co.ug</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Royal Courtesies Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Elements -->
+    <div class="floating-chat" id="floatingChat">
+        <div class="chat-icon">
+            <i class="fas fa-comments"></i>
+        </div>
+    </div>
+
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <!-- Social Media Floating Bar -->
+    <div class="social-floating">
+        <a href="#" class="social-fb"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-tw"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-in"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="social-wa"><i class="fab fa-whatsapp"></i></a>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

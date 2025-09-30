@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Royal Courtesies Ltd</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="nav-logo">
+            <a href="index.html">
+                <img src="images/royal_logo.png" alt="Royal Courtesies Ltd" class="logo-image">
+                <span  style="color: #D4AF37; font-weight: bold;">ROYAL COURTESIES LTD</span>
+            </a>
+        </div>
+        <div class="nav-menu" id="navMenu">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="about.html" class="nav-link">About</a>
+            <div class="nav-item dropdown">
+                <a href="services.html" class="nav-link dropdown-toggle">
+                    Services <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown-menu">
+                    <a href="services.html#events-management" class="dropdown-link">
+                        <i class="fas fa-calendar-alt"></i>
+                        Events Management
+                    </a>
+                    <a href="services.html#event-planning" class="dropdown-link">
+                        <i class="fas fa-clipboard-list"></i>
+                        Event Planning
+                    </a>
+                    <a href="services.html#protocol-services" class="dropdown-link">
+                        <i class="fas fa-user-tie"></i>
+                        Protocol Services
+                    </a>
+                    <a href="services.html#interior-design" class="dropdown-link">
+                        <i class="fas fa-couch"></i>
+                        Interior Design
+                    </a>
+                    <a href="services.html#photography" class="dropdown-link">
+                        <i class="fas fa-camera"></i>
+                        Photography
+                    </a>
+                    <a href="services.html#videography" class="dropdown-link">
+                        <i class="fas fa-video"></i>
+                        Videography
+                    </a>
+                </div>
+            </div>
+            <a href="portfolio.html" class="nav-link">Portfolio</a>
+            <a href="contact.html" class="nav-link active">Contact</a>
+        </div>
+        <div class="nav-toggle" id="navToggle">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </div>
+</nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p>Let's start planning your unforgettable event</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>Get In Touch</h2>
+                    <p>Ready to create something extraordinary? We'd love to hear from you. Reach out to us through any of the following channels or fill out the contact form.</p>
+                    
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Our Location</h3>
+                                <p>Plot 123, Kampala Road<br>Kampala, Uganda</p>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Phone Number</h3>
+                                <p>+256 782 722 222<br>+256 414 123 456</p>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Email Address</h3>
+                                <p>info@royalcourtesies.co.ug<br>queries@royalcourtesies.co.ug</p>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Working Hours</h3>
+                                <p>Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 4:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="social-links-large">
+                        <h3>Follow Us</h3>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-container">
+                    <h2>Send Us a Message</h2>
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="eventType">Event Type *</label>
+                            <select id="eventType" name="eventType" required>
+                                <option value="">Select Event Type</option>
+                                <option value="wedding">Wedding</option>
+                                <option value="corporate">Corporate Event</option>
+                                <option value="birthday">Birthday Party</option>
+                                <option value="conference">Conference</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="eventDate">Proposed Event Date</label>
+                            <input type="date" id="eventDate" name="eventDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="guests">Estimated Number of Guests</label>
+                            <input type="number" id="guests" name="guests" min="1">
+                        </div>
+                        <div class="form-group">
+                            <label for="services">Services Interested In</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="services" value="management"> Events Management</label>
+                                <label><input type="checkbox" name="services" value="planning"> Event Planning</label>
+                                <label><input type="checkbox" name="services" value="protocol"> Protocol Services</label>
+                                <label><input type="checkbox" name="services" value="design"> Interior Design</label>
+                                <label><input type="checkbox" name="services" value="photography"> Photography</label>
+                                <label><input type="checkbox" name="services" value="videography"> Videography</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Tell us about your event vision and requirements..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <h2>Find Us</h2>
+            <div class="map-placeholder">
+                <div class="map-content">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Kampala, Uganda</h3>
+                    <p>Plot 123, Kampala Road</p>
+                    <a href="#" class="btn btn-outline">Get Directions</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Quick answers to common questions</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>How far in advance should I book your services?</h3>
+                    <p>We recommend booking at least 3-6 months in advance for weddings and large events, and 1-2 months for corporate events. However, we can accommodate last-minute requests depending on availability.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Do you offer packages or custom solutions?</h3>
+                    <p>We provide both pre-designed packages for common event types and fully customized solutions tailored to your specific needs, preferences, and budget.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What areas in Uganda do you serve?</h3>
+                    <p>We primarily serve Kampala and surrounding areas, but we're available for events throughout Uganda. Additional travel fees may apply for locations outside Kampala.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Can you work with my budget?</h3>
+                    <p>Absolutely! We believe exceptional events can be created at various budget levels. We'll work closely with you to maximize your budget while delivering outstanding quality.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="images/royal_logo.png" alt="Royal Courtesies Ltd" class="logo-image">
+                        <span  style="color: #D4AF37; font-weight: bold;">Royal Courtesies Ltd</span>
+                    </div>
+                    <p>Crafting unforgettable elegance through exceptional event management, protocol services, and creative design solutions in Uganda.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="services.html">Events Management</a></li>
+                        <li><a href="services.html">Event Planning</a></li>
+                        <li><a href="services.html">Protocol Services</a></li>
+                        <li><a href="services.html">Interior Design</a></li>
+                        <li><a href="services.html">Photography</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> Kampala, Uganda</li>
+                        <li><i class="fas fa-phone"></i> +256 782 722 222</li>
+                        <li><i class="fas fa-envelope"></i> info@royalcourtesies.co.ug</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Royal Courtesies Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Elements -->
+    <div class="floating-chat" id="floatingChat">
+        <div class="chat-icon">
+            <i class="fas fa-comments"></i>
+        </div>
+    </div>
+
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <!-- Social Media Floating Bar -->
+    <div class="social-floating">
+        <a href="#" class="social-fb"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-tw"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-in"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="social-wa"><i class="fab fa-whatsapp"></i></a>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
