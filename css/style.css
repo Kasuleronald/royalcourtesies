@@ -1847,3 +1847,14 @@ section {
     margin-bottom: 15px;
     text-align: center;
 }
+
+/* Emergency fix for chat inputs */
+#chatName, #chatMessage {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.chat-form .form-group {
+    display: block !important;
+}
